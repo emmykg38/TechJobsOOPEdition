@@ -26,9 +26,16 @@ public class Location {
 
     // Custom toString, equals, and hashCode methods:
 
+//    @Override
+//    public String toString() {
+//        return value;
+//    }
+
     @Override
     public String toString() {
-        return value;
+        return "Location{" +
+                "value='" + value + '\'' +
+                '}';
     }
 
     @Override
