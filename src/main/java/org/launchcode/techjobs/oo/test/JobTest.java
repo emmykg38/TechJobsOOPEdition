@@ -67,4 +67,16 @@ public class JobTest {
     }
 
 
+    @Test
+    public void testJobsForEquality() {
+        Job funJob = new Job("iOS Developer", new Employer("Square"), new Location("St. Louis"),
+                new PositionType("Lead developer"), new CoreCompetency("Problem solving"));
+        Job notFunJob = new Job("iOS Developer", new Employer("Square"), new Location("St. Louis"),
+                new PositionType("Lead developer"), new CoreCompetency("Problem solving"));
+        Assert.assertFalse(funJob.equals(notFunJob));
+
+        //i'm not understanding the id generator here... and how can I be sure this test is running properly?
+    }
+
+
 }
