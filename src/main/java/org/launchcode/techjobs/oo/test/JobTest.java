@@ -79,4 +79,27 @@ public class JobTest {
     }
 
 
+
+
+
+    @Test
+    public void testToStringMethodPrintsLinesCorrectlyAndDisplaysValues() {
+        Job stringJob = new Job("Data Analyst", new Employer("Slalom"), new Location("St. Louis"),
+                new PositionType("Data team"), new CoreCompetency("Cleaning data models"));
+        String expected = "\nID: 3\nName: Data Analyst\nEmployer: Slalom\nLocation: St. Louis" +
+                "\nPosition Type: Data team\nCore Competency: Cleaning data models\n";
+        Assert.assertEquals(expected, stringJob.toString());
+    }
+
+
+    @Test
+    public void testToStringMethodDisplaysDataNotAvailableIfNoValueGiven() {
+        Job stringJob = new Job("Data Analyst", new Employer("Slalom"), new Location("St. Louis"),
+                new PositionType(""), new CoreCompetency("Cleaning data models"));
+        String expected = "\nID: 3\nName: Data Analyst\nEmployer: Slalom\nLocation: St. Louis" +
+                "\nPosition Type: Data not available\nCore Competency: Cleaning data models\n";
+        Assert.assertEquals(expected, stringJob.toString());
+    }
+
+
 }
