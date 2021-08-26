@@ -1,7 +1,6 @@
 package org.launchcode.techjobs.oo;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.Objects;
 
 public class Job {
@@ -33,8 +32,6 @@ public class Job {
     }
 
 
-
-
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
 
@@ -53,21 +50,51 @@ public class Job {
     }
 
 
-
     //what if I stored the key value pairs in a HashMap? Then, run into issue of different value types(int)
     @Override
     public String toString() {
 
 
-        return  "\nID: " + id +
+        if (name == "") {
+        setName("Data not available");
+        }
+        if (Job.this.employer.getValue().equals("")) {
+        this.employer.setValue("Data not available");
+        }
+        if(Job.this.location.getValue().equals("")) {
+        this.location.setValue("Data not available");
+        }
+        if(Job.this.positionType.getValue().equals("")) {
+        this.positionType.setValue("Data not available");
+        }
+        if(Job.this.coreCompetency.getValue().equals("")) {
+        this.coreCompetency.setValue("Data not available");
+        }
+
+
+        return  "\n" +
+                "ID: " + id +
                 "\nName: " + name +
                 "\nEmployer: " + employer +
                 "\nLocation: " + location +
                 "\nPosition Type: " + positionType +
-                "\nCore Competency: " + coreCompetency + "\n";
-
-
+                "\nCore Competency: " + coreCompetency +
+                "\n";
     }
+
+
+
+
+
+
+
+//
+//        if (name == "" && Job.this.employer.getValue().equals("") &&
+//    Job.this.location.getValue().equals("") && Job.this.positionType.getValue().equals("")
+//        && Job.this.coreCompetency.getValue().equals("")) {
+//        return "OOPS! This job does not seem to exist.";
+//    }
+//
 
 
     public int getId() {
@@ -124,40 +151,30 @@ public class Job {
 
 
 //ARRAYLIST
-//    ArrayList<Object> value = new ArrayList<>();
-//        value.add(name);
-//                value.add(employer);
-//                value.add(location);
-//                value.add(positionType);
-//                value.add(coreCompetency);
+//ArrayList<Object> fields = new ArrayList<>();
+//        fields.add(name);
+//                fields.add(employer);
+//                fields.add(location);
+//                fields.add(positionType);
+//                fields.add(coreCompetency);
 //
-//                for(int i = 0; i < value.size(); i++) {
-//        if (value.get(i) == "") {
-//        return "Data not available";
+//                Object dataForJob = null;
+//
+//                for (int i = 0; i < fields.size(); i++) {
+//        if (fields.get(i) == "") {
+//        fields.set(i, "Data not available");
 //        }
 //
-//        }
-//        return  "\nID: " + id +
-//        "\nName: " + value.get(0) +
-//        "\nEmployer: " + value.get(1) +
-//        "\nLocation: " + value.get(2) +
-//        "\nPosition Type: " + value.get(3) +
-//        "\nCore Competency: " + value.get(4) + "\n";
-
-
-
-
-
-
-//HASHMAP
-//        System.out.println("\n");
-//        HashMap<String, Object> toString = new HashMap<>();
-//        toString.put("Name: ", name);
-//        toString.put("Employer: ", employer);
-//        toString.put("Location: ", location);
-//        toString.put("Position Type: ", positionType);
-//        toString.put("Core Competency: ", coreCompetency);
-//        for (key : toString.values()) {
-//            System.out.println(key[i]);
+//        dataForJob = "\nName: " + fields.get(0) +
+//        "\nEmployer: " + employer +
+//        "\nLocation: " + location +
+//        "\nPosition Type: " + fields.get(3) +
+//        "\nCore Competency: " + coreCompetency;
 //
 //        }
+//        return "\n" + "ID: " + id + dataForJob + "\n";
+
+
+
+
+

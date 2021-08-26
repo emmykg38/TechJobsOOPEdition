@@ -19,26 +19,33 @@ public class JobTest {
 
     Job testJob1;
     Job testJob2;
-    @Before
-    public void createJobObjects() {
-        testJob1 = new Job();
-        testJob2 = new Job();
-    }
+
+//    @Before
+//    public void createJobObjects() {
+//        testJob1 = new Job();
+//        testJob2 = new Job();
+//    }
 
 
     @Test
-    public void testSettingJobIdAreNotEqual() {
+    public void testSettingJobId() {
+        testJob1 = new Job();
+        testJob2 = new Job();
         Assert.assertFalse(testJob1.getId() == testJob2.getId());
     }
 
 
     @Test
     public void testSettingJobIdIncrementCorrectly() {
+        testJob1 = new Job();
+        testJob2 = new Job();
         Assert.assertTrue(testJob2.getId() > testJob1.getId());
     }
 
     @Test
     public void testSettingJobIdIncrementsByOne() {
+        testJob1 = new Job();
+        testJob2 = new Job();
         Assert.assertEquals(1, testJob1.getId(), .001);
         Assert.assertEquals(2, testJob2.getId(), .001);
     }
@@ -80,26 +87,48 @@ public class JobTest {
 
 
 
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job stringJob5 = new Job("Data Analyst", new Employer("Slalom"), new Location("St. Louis"),
+                new PositionType("Data team"), new CoreCompetency("Cleaning data models"));
+        String dataInfo = "ID: 7\nName: Data Analyst\nEmployer: Slalom\nLocation: St. Louis" +
+        "\nPosition Type: Data team\nCore Competency: Cleaning data models";
+        char firstChar = stringJob5.toString().charAt(0);
+        char lastChar = stringJob5.toString().charAt(stringJob5.toString().length()-1);
+       Assert.assertEquals('\n' + dataInfo + '\n', stringJob5.toString());
+       Assert.assertEquals(firstChar, '\n');
+       Assert.assertEquals(lastChar, '\n');
+    }
+
 
 
     @Test
-    public void testToStringMethodPrintsLinesCorrectlyAndDisplaysValues() {
+    public void testToStringContainsCorrectLabelsAndData() {
         Job stringJob = new Job("Data Analyst", new Employer("Slalom"), new Location("St. Louis"),
                 new PositionType("Data team"), new CoreCompetency("Cleaning data models"));
-        String expected = "\nID: 3\nName: Data Analyst\nEmployer: Slalom\nLocation: St. Louis" +
+        String expected = "\nID: 6\nName: Data Analyst\nEmployer: Slalom\nLocation: St. Louis" +
                 "\nPosition Type: Data team\nCore Competency: Cleaning data models\n";
         Assert.assertEquals(expected, stringJob.toString());
     }
 
 
     @Test
-    public void testToStringMethodDisplaysDataNotAvailableIfNoValueGiven() {
-        Job stringJob = new Job("Data Analyst", new Employer("Slalom"), new Location("St. Louis"),
-                new PositionType(""), new CoreCompetency("Cleaning data models"));
-        String expected = "\nID: 3\nName: Data Analyst\nEmployer: Slalom\nLocation: St. Louis" +
-                "\nPosition Type: Data not available\nCore Competency: Cleaning data models\n";
-        Assert.assertEquals(expected, stringJob.toString());
+    public void testToStringHandlesEmptyField() {
+        Job stringJob7 = new Job("Data Analyst", new Employer("Slalom"), new Location("St. Louis"),
+                new PositionType(""), new CoreCompetency(""));
+        String expected = "\nID: 5\nName: Data Analyst\nEmployer: Slalom\nLocation: St. Louis" +
+                "\nPosition Type: Data not available\nCore Competency: Data not available\n";
+        Assert.assertEquals(expected, stringJob7.toString());
     }
+
+
+//    @Test
+//    public void testToStringMethodReturnsOopsJobDoesntExistIfDataOnlyInIdField() {
+//        Job stringJob = new Job("", new Employer(""), new Location(""),
+//                new PositionType(""), new CoreCompetency(""));
+//        String expected = "OOPS! This job does not seem to exist.";
+//        Assert.assertEquals(expected, stringJob.toString());
+//    }
 
 
 }
